@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="angular.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AngularJS</title>
+</head>
+<!--le but d angular c'est de creer des atribut dans ube balise HTML qu'on lapell directive -->
+<body ng-app> <!-- on utilise l Angular depuis cet directive ng-app-->
+    <h3>Recuperation Valeur Input</h3>    
+    <input type="text" ng-model="test"> <!--creation du directive angular ng-model avec du valeur test-->
+    <h1>{{test}}</h1><!--on essay de recuperer la valeur test et de l' afficher dans une balise h1 -->
+    <!--on affecte directement la valeur du directive avec le ng-init-->
+    <div ng-init="users =['koto','bema','rasoa']"></div>
+    <h3>Affichage valeur tableau boucle for Each</h3>
+    <ul>
+        <!--on va afficher les valeur de users avec de boucle for each = ng-repeat-->
+        <li ng-repeat="user in users" >{{user}}</li>
+    </ul>
+    <h3>Systeme de filtre | uppercase et Recherche</h3>
+    <input type="text" ng-model="query">
+    {{query}}
+    <div ng-init="users =['koto','bema','rasoa']">
+    <ul>
+        <!--filter c pour filtrer les valeurs ici on va filtrer le tableau apartir de query -->
+        <li ng-repeat="user in users | filter:query " >{{user | uppercase}}</li>
+    </ul>
+    </div>
+    <h3>Organisation filter avec orderBY</h3>
+    <select ng-model="order" >
+        <option value="username">orderByUsername</option>
+        <option value="content">orderByContent</option>
+    </select>
+    <div ng-init="orderbys =[{username:'koto',content:'a'},{username:'bema',content:'b'},{username:'rasoa',content:'c'}]">
+        <ul>
+            <li ng-repeat="orderby in orderbys | orderBy:order " >{{orderby}}</li>
+        </ul>
+        </div>
+</body>
+</html> 
